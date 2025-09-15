@@ -1,0 +1,70 @@
+---
+
+import { Tabs, TabsList, TabsTab, TabsPanel } from 'accessible-astro-components';
+import PlotFigure from "../components/PlotFigure.astro";
+import Layout from "../layouts/Layout.astro";
+import * as Plot from "@observablehq/plot";
+import penguins from "../assets/penguins.json";
+
+const penguinsAdelie = penguins.filter(({ species }) => species === "Adelie");
+const penguinsGentoo = penguins.filter(({ species }) => species === "Gentoo");
+const penguinsChinstrap = penguins.filter(({ species }) => species === "Chinstrap");
+---
+
+
+<h1 class="text-3xl font-bold p-5 text-center">Test Astro et Plot (Observablehq) TAB</h1>
+
+<h3 class="text-2xl font-bold p-5 text-center">Menu</h3>
+
+<Tabs>
+  <TabsList>
+    <TabsTab id="gentoo" controls="panel-gentoo" selected>Gentoo</TabsTab>
+    <TabsTab id="chinstrap" controls="panel-chinstrap">Chinstrap</TabsTab>
+    <TabsTab id="adelie" controls="panel-adelie">Adelie</TabsTab>
+  </TabsList>
+
+  <TabsPanel id="panel-gentoo" selected>
+    <h3 class="text-3xl">Gentoo</h3>
+    <PlotFigure
+      options={{
+        marks: [
+          Plot.dot(penguinsGentoo, {
+            x: "culmen_length_mm",
+            y: "culmen_depth_mm",
+            stroke: "species",
+          }),
+        ],
+      }}
+    />
+  </TabsPanel>
+
+  <TabsPanel id="panel-chinstrap">
+    <h3 class="text-3xl">Chinstrap</h3>
+    <PlotFigure
+      options={{
+        marks: [
+          Plot.dot(penguinsChinstrap, {
+            x: "culmen_length_mm",
+            y: "culmen_depth_mm",
+            stroke: "species",
+          }),
+        ],
+      }}
+    />
+  </TabsPanel>
+
+  <TabsPanel id="panel-adelie">
+    <h3 class="text-3xl">Adelie</h3>
+    <PlotFigure
+      options={{
+        marks: [
+          Plot.dot(penguinsAdelie, {
+            x: "culmen_length_mm",
+            y: "culmen_depth_mm",
+            stroke: "species",
+          }),
+        ],
+      }}
+    />
+  </TabsPanel>
+</Tabs>
