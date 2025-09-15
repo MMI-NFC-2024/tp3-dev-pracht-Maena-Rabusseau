@@ -11,7 +11,7 @@ import penguins from "../assets/penguins.json";
 
 ---
 
-<Layout>
+<Layout class="flex flex-col items-center" >
 
    <!-- <nav class="bg-gray-100 p-5 flex justify-center gap-4 rounded-md shadow-md mb-6">
     
@@ -23,12 +23,14 @@ import penguins from "../assets/penguins.json";
 
   <!-- 
   Ajout nouvelle navigation -->
-  
+  <div class="flex flex-col items-center">
   <select id="species">
 <option value="Adelie">Adelie</option>
 <option value="Chinstrap">Chinstrap</option>
 <option value="Gentoo">Gentoo</option>
 </select>
+
+</div>
 <script>
 document.querySelector("#species")?.addEventListener("change", (evt) => {
 const value = (evt.target as HTMLSelectElement).value;
@@ -37,8 +39,9 @@ location.pathname = "/species/"+value;
 </script>
 
 
- <h1 class="text-2xl p-5 pl-5">Test Astro et Plot (Observablehq)</h1>
-  <PlotFigure
+ <h1 class="text-2xl font-bold text-center mb-6 p-5 pl-5">Test Astro et Plot (Observablehq)</h1>
+
+  <PlotFigure class="mb-10"
     options={{
       marks: [
         Plot.dot(penguins, {
@@ -49,19 +52,22 @@ location.pathname = "/species/"+value;
       ],
     }}
   />
-  <h3 class="text-2xl p-2 pl-30">Menu </h3>
+  <h3 class="text-2xl p-2  font-semibold mb-4 text-center pl-30">Menu </h3>
 
 
-  <nav class="p-5">
-    <ul class="flex gap-5">
-      <li><a class="border-2 border-black p-3 rounded-full  " href="#Gentoo">Gentoo</a></li>
-      <li><a class="border-2 border-black p-3 rounded-full"  href="#Chinstrap">Chinstrap</a></li>
-      <li><a class="border-2 border-black p-3 rounded-full"  href="#Adelie">Adelie</a></li>
+  <nav class="mb-8">
+    <ul class="flex gap-6 justify-center">
+      <li><a class="border-2 border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-blue-500 hover:text-white transition" href="#Gentoo">Gentoo</a></li>
+      <li><a class="border-2 border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-blue-500 hover:text-white transition" href="#Chinstrap">Chinstrap</a></li>
+      <li><a class="border-2 border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-blue-500 hover:text-white transition" href="#Adelie">Adelie</a></li>
     </ul>
   </nav>
-<div class="flex gap-2 overflow-x-auto scroll-smooth p-10">
-  <div class="min-w-full   " id="Gentoo">
-    <h3 class="text-3xl">Gentoo</h3> 
+
+
+
+<div class="flex flex-col gap-16 w-full max-w-5xl  overflow-x-auto scroll-smooth p-10">
+  <div class="min-w-full   " id="Gentoo" >
+    <h3 class="text-3xl font-bold mb-4">Gentoo</h3> 
       <PlotFigure 
     options={{
       marks: [
@@ -74,8 +80,8 @@ location.pathname = "/species/"+value;
     }}
   />
   </div>
-  <div class="min-w-full " id="Chinstrap">
-    <h3 class="text-3xl">Chinstrap</h3> 
+  <div class="min-w-full " id="Chinstrap"  class="flex flex-col items-center">
+    <h3 class="text-3xl font-bold mb-4">Chinstrap</h3> 
       <PlotFigure
     options={{
       marks: [
@@ -88,8 +94,8 @@ location.pathname = "/species/"+value;
     }}
   />
   </div>
-  <div  class="min-w-full "id="Adelie">
-    <h3 class="text-3xl">Adelie</h3> 
+  <div  class="min-w-full "id="Adelie"  class="flex flex-col items-center">
+    <h3 class="text-3xl font-bold mb-4">Adelie</h3> 
       <PlotFigure
     options={{
       marks: [
