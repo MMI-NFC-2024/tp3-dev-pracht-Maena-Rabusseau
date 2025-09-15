@@ -28,13 +28,31 @@ import penguins from "../assets/penguins.json";
   <Layout>
 
 
-  <nav class=" bg-gray-100 p-5 flex justify-center gap-4 rounded-md shadow-md mb-6">
+  <!-- <nav class=" bg-gray-100 p-5 flex justify-center gap-4 rounded-md shadow-md mb-6">
     <ul class="flex gap-5">
       <li><a class="border-2 border-black p-3 rounded-full  " href="#Gentoo">Gentoo</a></li>
       <li><a class="border-2 border-black p-3 rounded-full"  href="#Chinstrap">Chinstrap</a></li>
       <li><a class="border-2 border-black p-3 rounded-full"  href="#Adelie">Adelie</a></li>
     </ul>
-  </nav>
+  </nav> -->
+
+  <!-- 
+  Ajout nouvelle navigation -->
+  
+  <select id="species">
+<option value="Adelie">Adelie</option>
+<option value="Chinstrap">Chinstrap</option>
+<option value="Gentoo">Gentoo</option>
+</select>
+<script>
+document.querySelector("#species")?.addEventListener("change", (evt) => {
+const value = (evt.target as HTMLSelectElement).value;
+window.location.hash = value;
+});
+</script>
+
+
+
 <div class="flex gap-2 overflow-x-auto scroll-smooth p-10">
   <div class="min-w-full   " id="Gentoo">
     <h3 class="text-3xl">Gentoo</h3> 
