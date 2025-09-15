@@ -1,0 +1,88 @@
+---
+import PlotFigure from "../components/PlotFigure.astro";
+import Layout from "../layouts/Layout.astro";
+import * as Plot from "@observablehq/plot";
+import penguins from "../assets/penguins.json";
+ const  penguinsAdelie = penguins.filter(({species})=>species==="Adelie")
+
+  const  penguinsGentoo = penguins.filter(({species})=>species==="Gentoo")
+
+ const  penguinsChinstrap = penguins.filter(({species})=>species==="Chinstrap")
+
+---
+
+<Layout>
+
+   <nav class="bg-gray-100 p-5 flex justify-center gap-4 rounded-md shadow-md mb-6">
+    
+    <a class="p-5 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition" href="/species/Adelie" target="species-frame">Adelie</a>
+    <a class="p-5 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition" href="/species/Gentoo" target="species-frame">Gentoo</a>
+    <a class="p-5 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition" href="/species/Chinstrap" target="species-frame">Chinstrap</a>
+  </nav>
+  <!-- <h1 class="text-2xl p-5 pl-5">Test Astro et Plot (Observablehq)</h1>
+  <PlotFigure
+    options={{
+      marks: [
+        Plot.dot(penguins, {
+          x: "culmen_length_mm",
+          y: "culmen_depth_mm",
+          stroke: "species",
+        }),
+      ],
+    }}
+  />
+  <h3 class="text-2xl p-2 pl-30">Menu </h3>
+
+
+  <nav class="p-5">
+    <ul class="flex gap-5">
+      <li><a class="border-2 border-black p-3 rounded-full  " href="#Gentoo">Gentoo</a></li>
+      <li><a class="border-2 border-black p-3 rounded-full"  href="#Chinstrap">Chinstrap</a></li>
+      <li><a class="border-2 border-black p-3 rounded-full"  href="#Adelie">Adelie</a></li>
+    </ul>
+  </nav>
+<div class="flex gap-2 overflow-x-auto scroll-smooth p-10">
+  <div class="min-w-full   " id="Gentoo">
+    <h3 class="text-3xl">Gentoo</h3> 
+      <PlotFigure 
+    options={{
+      marks: [
+        Plot.dot(penguinsGentoo, {
+          x: "culmen_length_mm",
+          y: "culmen_depth_mm",
+          stroke: "species",
+        }),
+      ],
+    }}
+  />
+  </div>
+  <div class="min-w-full " id="Chinstrap">
+    <h3 class="text-3xl">Chinstrap</h3> 
+      <PlotFigure
+    options={{
+      marks: [
+        Plot.dot(penguinsChinstrap, {
+          x: "culmen_length_mm",
+          y: "culmen_depth_mm",
+          stroke: "species",
+        }),
+      ],
+    }}
+  />
+  </div>
+  <div  class="min-w-full "id="Adelie">
+    <h3 class="text-3xl">Adelie</h3> 
+      <PlotFigure
+    options={{
+      marks: [
+        Plot.dot(penguinsAdelie, {
+          x: "culmen_length_mm",
+          y: "culmen_depth_mm",
+          stroke: "species",
+        }),
+      ],
+    }}
+  />
+  </div>
+</div> -->
+</Layout>
